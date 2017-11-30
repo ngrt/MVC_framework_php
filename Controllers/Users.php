@@ -1,5 +1,5 @@
 <?php
-    class UsersController extends Controller
+    class Users extends Controller
     {
         function index()
         {
