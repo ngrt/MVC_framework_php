@@ -1,12 +1,27 @@
 <?php
-    require(ROOT . 'Controllers/' . $controller . '.php');
 
-    $controller = new $controller();
+    class Dispatcher
+    {
 
-    if (method_exists($controller, $action)){
-        $controller->$action();
-    }
-    else{
-        echo "Error 404";
+        private $request;
+
+        public function dispatch()
+        {
+            $this->request = new Request();
+            Router::parse($this->request->url, $this->request);
+
+            $controller = $this->loadController();
+            call_user_func([$controller, $this->request->action], $this->request->params);
+        }
+
+        public function loadController()
+        {
+            $name = $this->request->controller . "Controller";
+            $file = ROOT . 'Controllers/' . $name . '.php';
+            require($file);
+            $controller = new $name();
+            return $controller;
+        }
+
     }
 ?>

@@ -1,9 +1,16 @@
 <?php
 
-    $params = explode('/', $_GET['p']);
+    class Router
+    {
 
-    $controller = $params[0];
-    $action = isset($params[1]) ? $params[1] : 'index';
-
-    require(ROOT . "dispatcher.php");
+        static public function parse($url, $request)
+        {
+            $url = trim($url);
+            $morceau = explode('/', $url);
+            $morceau = array_slice($morceau, 2);
+            $request->controller = $morceau[0];
+            $request->action = $morceau[1];
+            $request->params = array_slice($morceau, 2);
+        }
+    }
 ?>
