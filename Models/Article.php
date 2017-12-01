@@ -15,7 +15,7 @@ class Article extends Model
         ]);
     }
 
-    public function read($id = null)
+    public function show($id)
     {
         if ($id == null)
         {

@@ -11,7 +11,6 @@ class Database
         if(is_null(self::$bdd)) {
             self::$bdd = new PDO("mysql:host=localhost;dbname=PHP_RUSH_MVC", 'root', 'root');
         }
-
         return self::$bdd;
     }
 }
