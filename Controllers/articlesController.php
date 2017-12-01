@@ -1,7 +1,7 @@
 <?php
     class articlesController extends Controller
     {
-        function index($id)
+        function index($id = null)
         {
             require(ROOT . 'Models/Article.php');
             $article = new Article();
