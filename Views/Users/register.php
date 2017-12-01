@@ -1,5 +1,3 @@
-<?php var_dump($_POST) ?>
-
 <form method='post' action='#'>
 
   <div class="form-group">
@@ -19,7 +17,7 @@
 
   <div class="form-group">
     <label for="password-confirmation">Password Confirmation</label>
-    <input type="password" class="form-control" id="password-confirmation" placeholder="Enter the same password" name="pasword-confirmation">
+    <input type="password" class="form-control" id="password-confirmation" placeholder="Enter the same password" name="password-confirmation">
   </div>
 
   <div class="form-check">

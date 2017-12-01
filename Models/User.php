@@ -1,24 +1,27 @@
 <?php
+
 class User extends Model
 {
     public function create($username, $hashed_password, $email, $group = 0, $status = 1)
     {
-        $sql = 'INSERT INTO users (username, hashed_password, email, user.group, status, created_at, updated_at) VALUES (:username, :hashed_password, :email, :user.group, :status, :created_at, :updated_at)';
+        $sql = "INSERT INTO users (username, hashed_password, email, group_rush, status, created_at, updated_at) VALUES (:username, :hashed_password, :email, :group_rush, :status, :created_at, :updated_at)";
+        //echo $sql;
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([
             'username' => $username,
             'hashed_password' => $hashed_password,
             'email' => $email,
-            'user.group' => $group,
+            'group_rush' => $group,
             'status' => $status,
             'created_at' => date('Y-m-d H:i:s'),
-            'updated_at'  => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s')
+
         ]);
     }
 
     public function update($id, $username, $hashed_password, $email, $group, $status)
     {
-        $sql = 'UPDATE users SET username = :username, hashed_password = :hashed_password, email = :email, user.group = :user.group, status = :status, updated_at = :updated_at WHERE id = :id';
+        $sql = 'UPDATE users SET username = :username, hashed_password = :hashed_password, email = :email, users.group = :users.group, status = :status, updated_at = :updated_at WHERE id = :id';
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([
             'username' => $username,
