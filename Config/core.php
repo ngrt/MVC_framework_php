@@ -1,5 +1,5 @@
 <?php
-    require(ROOT . "Config/Db.php");
-    require(ROOT . "core/Model.php");
+    require(ROOT . "Config/db.php");
+    require(ROOT . "Core/Model.php");
     require(ROOT . "Core/Controller.php");
 ?>
