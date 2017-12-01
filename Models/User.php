@@ -68,5 +68,21 @@ class User extends Model
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([$id]);
     }
+
+    public function verify_password($email, $password)
+    {
+        $sql = "SELECT id FROM users WHERE email = ?";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute([$email]);
+        $id = $req->fetch()[0];
+
+        $sql = "SELECT hashed_password FROM users WHERE id = ?";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute([$id]);
+        $hashed_password = $req->fetch()[0];
+
+        return password_verify($password, $hashed_password);
+
+    }
 }
 ?>

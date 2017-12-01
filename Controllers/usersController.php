@@ -23,5 +23,27 @@ class usersController extends Controller
         }
 	}
 
+    public function login()
+    {
+        $this->render("login");
+
+        if (isset($_POST["email"]) && isset($_POST["password"]))
+        {
+            
+            require(ROOT . 'Models/User.php');
+            $user = new User();
+
+            if ($user->verify_password($_POST["email"], $_POST["password"]))
+            {
+                echo "You are connected";
+            }
+            else
+            {
+                echo "Error in password";
+            }
+        }
+
+        
+    }
 }
 ?>
