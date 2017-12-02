@@ -36,12 +36,22 @@ class User extends Model
 
     public function getGroup($id)
     {
-        $sql = 'SELECT users.group FROM users WHERE id = ?';
+        $sql = 'SELECT group_rush FROM users WHERE id = ?';
 
         $req = Database::getBdd()->prepare($sql);
         $req->execute([$id]);
 
         return $req->fetchAll();
+    }
+
+    public function getIdFromEmail($email)
+    {
+        $sql = 'SELECT id FROM users WHERE email = ?';
+
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute([$email]);
+
+        return $req->fetchAll()[0][0];
     }
 
     public function showUser($id)

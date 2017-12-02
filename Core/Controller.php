@@ -25,5 +25,22 @@
                 require(ROOT . "Views/Layouts/" . $this->layout . '.php');
             }
         }
+
+        private function secure_input($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
+        protected function secure_form($form)
+        {
+            foreach ($form as $key => $value)
+            {
+                $form[$key] = $this->secure_input($value);
+            }
+        }
+
     }
 ?>
