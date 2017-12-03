@@ -2,7 +2,7 @@
 
 class User extends Model
 {
-    public function create($username, $hashed_password, $email, $group = 0, $status = 1)
+    public function create($username, $hashed_password, $email, $group = 1, $status = 1)
     {
         $sql = "INSERT INTO users (username, hashed_password, email, group_rush, status, created_at, updated_at) VALUES (:username, :hashed_password, :email, :group_rush, :status, :created_at, :updated_at)";
         //echo $sql;
@@ -41,7 +41,7 @@ class User extends Model
         $req = Database::getBdd()->prepare($sql);
         $req->execute([$id]);
 
-        return $req->fetchAll();
+        return $req->fetchAll()[0][0];
     }
 
     public function getIdFromEmail($email)

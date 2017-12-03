@@ -16,6 +16,20 @@ class Article extends Model
         ]);
     }
 
+    public function index($start)
+    {
+        $results = [];
+        $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM articles LIMIT " . $start . ", 10";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute();
+        $results[0] =  $req->fetchAll(PDO::FETCH_ASSOC);
+
+        $req = Database::getBdd()->query('SELECT FOUND_ROWS() as total');
+        $results[1] = $req->fetch()['total'];
+
+        return $results;
+    }
+
     public function show($id = null)
     {
         if ($id == null)
@@ -30,6 +44,23 @@ class Article extends Model
             $req = Database::getBdd()->prepare($sql);
             $req->execute([$id]);
         }
+        return $req->fetchAll();
+    }
+
+    public function articlesFromUser($user_id = null)
+    {
+        if ($user_id == null)
+        {
+            $sql = 'SELECT * FROM articles';
+            $req = Database::getBdd()->prepare($sql);
+            $req->execute();
+        }
+        else
+        {
+            $sql = 'SELECT * FROM articles WHERE author_id = ?';
+            $req = Database::getBdd()->prepare($sql);
+            $req->execute([$user_id]);
+        }
 
         return $req->fetchAll();
     }
@@ -43,7 +74,7 @@ class Article extends Model
             $req = Database::getBdd()->prepare($sql);
             return $req->execute([
                 'body' => $body,
-                'id' => $id,
+                'id' => $id
             ]);
         }
         else

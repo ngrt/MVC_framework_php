@@ -38,8 +38,6 @@ class usersController extends Controller
             header("Location: " . WEBROOT . "articles/index");
         }
 
-        $this->render("login");
-
         if (isset($_POST["email"]) && isset($_POST["password"]))
         {
             require(ROOT . 'Models/User.php');
@@ -48,12 +46,23 @@ class usersController extends Controller
             if ($user->verify_password($_POST["email"], $_POST["password"]))
             {
                 $_SESSION["email"] = $_POST["email"];
+                header("Location: " . WEBROOT . "articles/index");
             }
             else
             {
                 echo "Error in credentials";
             }
         }
+        $this->render("login");
+
+    }
+
+    public function logout()
+    {
+        session_start();
+        $_SESSION = array();
+        session_destroy();
+        header("Location: " . WEBROOT . "articles/index");
     }
 
     public function verifyRegisterForm($post)
@@ -79,6 +88,8 @@ class usersController extends Controller
         }
         return $errors;
     }
+
+
 
 }
 ?>
