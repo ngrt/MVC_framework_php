@@ -47,7 +47,8 @@ class usersController extends Controller
             if ($user->verify_password($_POST["email"], $_POST["password"]))
             {
                 $_SESSION["email"] = $_POST["email"];
-                header("Location: " . WEBROOT . "articles/index");
+                var_dump($_POST);
+                //header("Location: " . WEBROOT . "articles/index");
             }
             else
             {
@@ -113,7 +114,6 @@ class usersController extends Controller
 
     public function management($id)
     {
-
         session_start();
 
         require(ROOT . 'Models/User.php');
@@ -131,10 +131,10 @@ class usersController extends Controller
             }
         }
 
-
-        for ($i = 0; $i < count($d['users']); $i++) {
-            $d['users'][$i]["group_rush_string"] = $this->groupTranslation($d['users'][$i]["group_rush"]);
-            $d['users'][$i]["status_string"] = $this->statusTranslation($d['users'][$i]["status"]);
+        foreach ($d['users'] as $key => $user)
+        {
+            $d['users'][$key]["group_rush_string"] = $this->groupTranslation($d['users'][$key]["group_rush"]);
+            $d['users'][$key]["status_string"] = $this->statusTranslation($d['users'][$key]["status"]);
         }
 
         $this->set($d);
@@ -186,7 +186,7 @@ class usersController extends Controller
         }
 
         $this->set($d);
-        $this->render('edit');
+        $this->render('edit.php');
     }
 
 

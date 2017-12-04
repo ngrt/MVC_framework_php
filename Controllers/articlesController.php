@@ -36,10 +36,17 @@
         {
             session_start();
 
+            require(ROOT . 'Models/Category.php');
+
+            $category = new Category();
+
+            $d["categories"] = $category->showCategories();
+
             if (isset($_POST["title"]) && isset($_POST["body"]))
             {
                 require(ROOT . 'Models/Article.php');
                 require(ROOT . 'Models/User.php');
+
                 $user = new User();
 
                 $d["errors"] = $this->verifyPostForm($_POST);
@@ -50,11 +57,11 @@
                     $this->secure_form($_POST);
 
                     $article = new Article();
-                    $article->create($_POST["title"], $_POST["body"], $user->getIdFromEmail($_SESSION["email"]));
+                    $article->create($_POST["title"], $_POST["body"], $user->getIdFromEmail($_SESSION["email"]), $_POST["category"]);
                     header("Location: " . WEBROOT . "articles/show/" . $article->getIdLastArticle());
                 }
             }
-
+            $this->set($d);
             $this->render('create');
         }
 
@@ -117,10 +124,14 @@
 
         function edit($id)
         {
-
             session_start();
 
             require(ROOT . 'Models/Article.php');
+            require(ROOT . 'Models/Category.php');
+            $category = new Category();
+
+            $d["categories"] = $category->showCategories();
+            $d["category_article"] = $category->getCatNameFromArticleId($id);
             $article = new Article();
 
             $d['article'] = $article->show($id);
@@ -133,10 +144,11 @@
                 if (count($this->verifyPostForm($_POST)) == 0)
                 {
                     $this->secure_form($_POST);
-                    $article->update($id, $_POST["title"], $_POST["body"]);
+                    $article->update($id, $_POST["title"], $_POST["body"], $_POST["category"]);
                     header("Location: " . WEBROOT . "articles/show/" . $id);
                 }
             }
+            $this->set($d);
             $this->render('edit');
         }
 

@@ -29,5 +29,3 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-<?php //var_dump((int)$_POST["status"]); ?>

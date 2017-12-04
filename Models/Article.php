@@ -3,9 +3,9 @@
 class Article extends Model
 {
 
-    public function create($title, $body = null, $author_id)
+    public function create($title, $body = null, $author_id, $cat_id)
     {
-        $sql = 'INSERT INTO articles (title, body, created_at, author_id, updated_at) VALUES (:title, :body, :created_at, :author_id, :updated_at)';
+        $sql = 'INSERT INTO articles (title, body, created_at, author_id, updated_at, cat_id) VALUES (:title, :body, :created_at, :author_id, :updated_at, :cat_id)';
 
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([
@@ -13,7 +13,8 @@ class Article extends Model
             'body' => $body,
             'created_at' => date('Y-m-d H:i:s'),
             'author_id' => $author_id,
-            'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s'),
+            'cat_id' => $cat_id
         ]);
     }
 
@@ -66,29 +67,31 @@ class Article extends Model
         return $req->fetchAll();
     }
 
-    public function update($id, $title = null, $body = null)
+    public function update($id, $title = null, $body = null, $cat_id)
     {
         if ($title == null)
         {
-            $sql = 'UPDATE articles SET body = :body, updated_at = :updated_at WHERE id = :id';
+            $sql = 'UPDATE articles SET body = :body, updated_at = :updated_at, cat_id = :cat_id WHERE id = :id';
 
             $req = Database::getBdd()->prepare($sql);
             return $req->execute([
                 'body' => $body,
                 'id' => $id,
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'cat_id' => $cat_id
             ]);
         }
         else
         {
-            $sql = 'UPDATE articles SET title = :title, body = :body, updated_at = :updated_at WHERE id = :id';
+            $sql = 'UPDATE articles SET title = :title, body = :body, updated_at = :updated_at, cat_id = :cat_id WHERE id = :id';
 
             $req = Database::getBdd()->prepare($sql);
             return $req->execute([
                 'title' => $title,
                 'body' => $body,
                 'id' => $id,
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'cat_id' => $cat_id
             ]);
         }
     }
@@ -125,7 +128,17 @@ class Article extends Model
         $req->execute();
 
         return $req->fetchAll()[0][0];
+    }
 
+    public function addCategory($article_id, $cat_id)
+    {
+        $sql = 'UPDATE articles SET cat_id = :cat_id WHERE id = :article_id';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([
+            'article_id' => $article_id,
+            'cat_id' => $cat_id
+        ]);
     }
 }
 

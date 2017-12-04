@@ -47,8 +47,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="<?php echo WEBROOT . "articles/create"; ?>">Create an article</a>
-                        <a class="dropdown-item" href="<?php echo WEBROOT . "articles/management/"; ?>">Manage
-                            articles</a>
+                        <a class="dropdown-item" href="<?php echo WEBROOT . "articles/management/"; ?>">Manage articles</a>
+                        <a class="dropdown-item" href="<?php echo WEBROOT . "categories/management/"; ?>">Manage categories</a>
                     </div>
                 </li>
                 <?php
