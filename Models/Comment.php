@@ -57,5 +57,21 @@ class Comment extends Model
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([$article_id]);
     }
+
+    public function deleteCommentsFromUser($author_id)
+    {
+        $sql = 'DELETE FROM comments WHERE author_id = ?';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([$author_id]);
+    }
+
+    public function deleteCommentsFromArticleDeletedUser($article_id)
+    {
+        $sql = 'DELETE FROM comments JOIN articles on articles.id = comments.article_id WHERE article_id = ?';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([$article_id]);
+    }
 }
 ?>

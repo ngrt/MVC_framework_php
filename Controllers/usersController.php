@@ -59,23 +59,49 @@ class usersController extends Controller
     {
         session_start();
         require(ROOT . 'Models/User.php');
+        require(ROOT . 'Models/Article.php');
+        require(ROOT . 'Models/Comment.php');
         $user = new User();
         $d["user"] = $user->showUser($id);
 
-        if (isset($_POST["username"]))
+        if (isset($_POST))
         {
-            $errors = $this->verifyRegisterForm($_POST);
-
-            if (count($errors) == 0)
+            if (isset($_POST["password"]))
             {
-                $this->secure_form($_POST);
-                $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                $user = new User();
-                if ($user->create($_POST["username"], $hashed_password, $_POST["email"]))
+                $errors = $this->verifyUpdatePasswordForm($_POST);
+                $d["errors"] = $this->verifyUpdatePasswordForm($_POST);
+                if (count($errors) == 0)
                 {
-                    $_SESSION["email"] = $_POST["email"];
-                    header("Location: " . WEBROOT . "articles/index");
+                    $this->secure_form($_POST);
+                    $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                    $user = new User();
+                    $user->updatePassword($id, $hashed_password);
+                    header("Refresh:0");
                 }
+            }
+            else if (isset($_POST["username"]))
+            {
+                $errors = $this->verifyUpdateUserForm($_POST);
+                $d["errors"] = $this->verifyUpdateUserForm($_POST);
+                if (count($errors) == 0)
+                {
+                    $this->secure_form($_POST);
+                    $user = new User();
+                    $user->updateUsername($id, $_POST["username"]);
+                    header("Refresh:0");
+                }
+            }
+            else if (isset($_POST["delete"]))
+            {
+                $user = new User();
+                $article = new Article();
+                $comment = new Comment();
+                $user->deleteUser($id);
+                $article->deleteArticlesFromUser($id);
+                $comment->deleteCommentsFromUser($id);
+                $_SESSION = array();
+                session_destroy();
+                header("Location: " . WEBROOT . "articles/index");
             }
         }
         $this->set($d);
@@ -110,6 +136,34 @@ class usersController extends Controller
             if (!filter_var($post["email"], FILTER_VALIDATE_EMAIL))
             {
                 $errors["email"] = "Invalid email";
+            }
+        }
+        return $errors;
+    }
+
+    public function verifyUpdateUserForm($post)
+    {
+        $errors = [];
+
+        if (isset($post["username"]))
+        {
+            if (strlen($post["username"]) < 3 || strlen($post["username"]) > 10)
+            {
+                $errors["username"] = "Invalid username";
+            }
+        }
+        return $errors;
+    }
+
+    public function verifyUpdatePasswordForm($post)
+    {
+        $errors = [];
+
+        if (isset($post))
+        {
+            if (strlen($post["password"]) < 8 || strlen($post["password"]) > 20 || $post["password"] != $post["password-confirmation"])
+            {
+                $errors["password"] = "Invalid password";
             }
         }
         return $errors;

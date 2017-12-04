@@ -110,6 +110,14 @@ class Article extends Model
         return $req->execute([$id]);
     }
 
+    public function deleteArticlesFromUser($author_id)
+    {
+        $sql = 'DELETE FROM articles WHERE author_id = ?';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([$author_id]);
+    }
+
     public function getIdLastArticle()
     {
         $sql = 'SELECT id FROM articles ORDER BY id DESC LIMIT 1';

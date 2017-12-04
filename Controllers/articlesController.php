@@ -42,6 +42,9 @@
                 require(ROOT . 'Models/User.php');
                 $user = new User();
 
+                $d["errors"] = $this->verifyPostForm($_POST);
+                $this->set($d);
+
                 if (count($this->verifyPostForm($_POST)) == 0)
                 {
                     $this->secure_form($_POST);
@@ -125,6 +128,8 @@
 
             if (isset($_POST["title"]))
             {
+                $d["errors"] = $this->verifyPostForm($_POST);
+                $this->set($d);
                 if (count($this->verifyPostForm($_POST)) == 0)
                 {
                     $this->secure_form($_POST);

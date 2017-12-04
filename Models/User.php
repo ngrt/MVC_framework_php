@@ -19,6 +19,28 @@ class User extends Model
         ]);
     }
 
+    public function updateUsername($id, $username)
+    {
+        $sql = 'UPDATE users SET username = :username, updated_at = :updated_at WHERE id = :id';
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([
+            'username' => $username,
+            'updated_at'  => date('Y-m-d H:i:s'),
+            'id' => $id
+        ]);
+    }
+
+    public function updatePassword($id, $hashed_password)
+    {
+        $sql = 'UPDATE users SET hashed_password = :hashed_password, updated_at = :updated_at WHERE id = :id';
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([
+            'hashed_password' => $hashed_password,
+            'updated_at'  => date('Y-m-d H:i:s'),
+            'id' => $id
+        ]);
+    }
+
     public function update($id, $username, $hashed_password, $email, $group, $status)
     {
         $sql = 'UPDATE users SET username = :username, hashed_password = :hashed_password, email = :email, users.group = :users.group, status = :status, updated_at = :updated_at WHERE id = :id';
@@ -56,7 +78,7 @@ class User extends Model
 
     public function showUser($id)
     {
-        $sql = "SELECT * FROM users WHERE $id = ?";
+        $sql = "SELECT * FROM users WHERE id = ?" ;
         $req = Database::getBdd()->prepare($sql);
         $req->execute([$id]);
 
