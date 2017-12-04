@@ -13,7 +13,7 @@ class Article extends Model
             'body' => $body,
             'created_at' => date('Y-m-d H:i:s'),
             'author_id' => $author_id,
-            'updated_date' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
     }
 
@@ -95,7 +95,7 @@ class Article extends Model
 
     public function getAuthor($id)
     {
-        $sql = "SELECT username FROM users JOIN articles ON users.id = articles.author_id WHERE articles.id = ?";
+        $sql = "SELECT users.id AS user_id, username FROM users JOIN articles ON users.id = articles.author_id WHERE articles.id = ?";
         $req = Database::getBdd()->prepare($sql);
         $req->execute([$id]);
 

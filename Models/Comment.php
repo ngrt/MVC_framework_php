@@ -2,7 +2,6 @@
 
 class Comment extends Model
 {
-
     public function create($author_id, $article_id, $body)
     {
         $sql = 'INSERT INTO comments (author_id, article_id, body, created_at) VALUES (:author_id, :article_id, :body, :created_at)';
@@ -16,56 +15,21 @@ class Comment extends Model
         ]);
     }
 
-    public function show($id = null)
+    public function commentsFromUser($author_id)
     {
-        if ($id == null)
-        {
-            $sql = 'SELECT * FROM articles';
-            $req = Database::getBdd()->prepare($sql);
-            $req->execute();
-        }
-        else
-        {
-            $sql = 'SELECT * FROM articles WHERE id = ?';
-            $req = Database::getBdd()->prepare($sql);
-            $req->execute([$id]);
-        }
-        return $req->fetchAll();
-    }
 
-    public function commentsFromUser($user_id)
-    {
-        if ($user_id == null)
-        {
-            $sql = 'SELECT * FROM articles';
-            $req = Database::getBdd()->prepare($sql);
-            $req->execute();
-        }
-        else
-        {
-            $sql = 'SELECT * FROM articles WHERE author_id = ?';
-            $req = Database::getBdd()->prepare($sql);
-            $req->execute([$user_id]);
-        }
+        $sql = 'SELECT * FROM comments WHERE author_id = ?';
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute([$author_id]);
 
         return $req->fetchAll();
     }
 
     public function commentsOfArticle($article_id)
     {
-        if ($user_id == null)
-        {
-            $sql = 'SELECT * FROM articles';
-            $req = Database::getBdd()->prepare($sql);
-            $req->execute();
-        }
-        else
-        {
-            $sql = 'SELECT * FROM articles WHERE author_id = ?';
-            $req = Database::getBdd()->prepare($sql);
-            $req->execute([$user_id]);
-        }
-
+        $sql = 'SELECT comments.*, users.username AS username FROM comments JOIN users on users.id = comments.author_id WHERE article_id = ? ORDER BY created_at DESC';
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute([$article_id]);
         return $req->fetchAll();
     }
 
@@ -78,12 +42,20 @@ class Comment extends Model
         return $req->fetchAll()[0];
     }
 
-    public function delete($id)
+    public function deleteComment($id)
     {
-        $sql = 'DELETE FROM articles WHERE id = ?';
+        $sql = 'DELETE FROM comments WHERE id = ?';
 
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([$id]);
+    }
+
+    public function deleteCommentsofArticle($article_id)
+    {
+        $sql = 'DELETE FROM comments WHERE article_id = ?';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([$article_id]);
     }
 }
 ?>

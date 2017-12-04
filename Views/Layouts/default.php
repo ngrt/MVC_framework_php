@@ -38,7 +38,7 @@
                     <a class="nav-link" href="<?php echo WEBROOT . "articles/index/"; ?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo WEBROOT . "users/account/"; ?>">My Account</a>
+                    <a class="nav-link" href="<?php echo WEBROOT . "users/account/" . $id; ?>">My Account</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"

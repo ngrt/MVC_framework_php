@@ -60,10 +60,25 @@
             session_start();
 
             require(ROOT . 'Models/Article.php');
+            require(ROOT . 'Models/User.php');
+            require(ROOT . 'Models/Comment.php');
+
             $article = new Article();
+            $comment = new Comment();
             $article->show($id);
             $d['article'] = $article->show($id);
             $d['author'] = $article->getAuthor($id)["username"];
+            $d['comments'] = $comment->commentsOfArticle($id);
+
+            if (isset($_POST["body"])) {
+                if (count($this->verifyCommentForm($_POST)) == 0) {
+                    $this->secure_form($_POST);
+
+                    $user = new User();
+                    $comment->create($user->getIdFromEmail($_SESSION["email"]), $id, $_POST["body"]);
+                    header("Location: " . WEBROOT . "articles/show/" . $id);
+                }
+            }
 
             $this->set($d);
             $this->render('show');
@@ -129,6 +144,20 @@
                 if (strlen($post["title"]) == 0)
                 {
                     $errors["title"] = "Invalid title";
+                }
+            }
+            return $errors;
+        }
+
+        function verifyCommentForm($post)
+        {
+            $errors = [];
+
+            if (isset($post))
+            {
+                if (strlen($post["body"]) == 0)
+                {
+                    $errors["body"] = "Invalid body";
                 }
             }
             return $errors;

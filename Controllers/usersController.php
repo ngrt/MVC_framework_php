@@ -24,9 +24,7 @@ class usersController extends Controller
                 }
             }
         }
-
         $this->render("register");
-
 	}
 
     public function login()
@@ -56,6 +54,34 @@ class usersController extends Controller
         $this->render("login");
 
     }
+
+    function account($id)
+    {
+        session_start();
+        require(ROOT . 'Models/User.php');
+        $user = new User();
+        $d["user"] = $user->showUser($id);
+
+        if (isset($_POST["username"]))
+        {
+            $errors = $this->verifyRegisterForm($_POST);
+
+            if (count($errors) == 0)
+            {
+                $this->secure_form($_POST);
+                $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                $user = new User();
+                if ($user->create($_POST["username"], $hashed_password, $_POST["email"]))
+                {
+                    $_SESSION["email"] = $_POST["email"];
+                    header("Location: " . WEBROOT . "articles/index");
+                }
+            }
+        }
+        $this->set($d);
+        $this->render('account');
+    }
+
 
     public function logout()
     {
