@@ -52,6 +52,14 @@
                     </div>
                 </li>
                 <?php
+                    if($group == 3)
+                    {
+                ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="<?php echo WEBROOT . "users/management/" . $id; ?>">Users Management</a>
+                        </li>
+                <?php
+                    }
                 }
                 ?>
                 <li class="nav-item">

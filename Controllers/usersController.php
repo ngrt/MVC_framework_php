@@ -3,10 +3,10 @@ class usersController extends Controller
 {
 
     public function register()
-	{
+    {
         session_start();
 
-		if (isset($_POST["username"]))
+        if (isset($_POST["username"]))
         {
             $errors = $this->verifyRegisterForm($_POST);
 
@@ -25,7 +25,7 @@ class usersController extends Controller
             }
         }
         $this->render("register");
-	}
+    }
 
     public function login()
     {
@@ -108,6 +108,49 @@ class usersController extends Controller
         $this->render('account');
     }
 
+    public function management($id){
+
+        session_start();
+
+        require(ROOT . 'Models/User.php');
+
+        $user = new User();
+
+        $d['users'] = $user->showAllUsers();
+
+        foreach ($d['users'] as $key => $user) {
+            if ($user["id"] == $id)
+            {
+                unset($d['users'][$key]);
+            }
+        }
+
+        $this->set($d);
+        $this->render('management');
+
+    }
+
+    public function modify()
+    {
+
+    }
+
+    public function delete($id)
+    {
+        session_start();
+        require(ROOT . 'Models/User.php');
+        require(ROOT . 'Models/Article.php');
+        require(ROOT . 'Models/Comment.php');
+        $user = new User();
+        $article = new Article();
+        $comment = new Comment();
+        $user->deleteUser($id);
+        $article->deleteArticlesFromUser($id);
+        $comment->deleteCommentsFromUser($id);
+        //$_SESSION = array();
+        //session_destroy();
+        header("Location: " . WEBROOT . "users/management/" . $id);
+    }
 
     public function logout()
     {
