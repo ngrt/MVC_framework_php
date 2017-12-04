@@ -24,8 +24,9 @@ class usersController extends Controller
                     header("Location: " . WEBROOT . "articles/index");
                 }
             }
+            $this->set($d);
         }
-        $this->set($d);
+
         $this->render("register");
     }
 
