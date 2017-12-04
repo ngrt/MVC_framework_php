@@ -9,6 +9,7 @@ class usersController extends Controller
         if (isset($_POST["username"]))
         {
             $errors = $this->verifyRegisterForm($_POST);
+            $d['errors'] = $this->verifyRegisterForm($_POST);
 
             require(ROOT . 'Models/User.php');
 
@@ -24,6 +25,7 @@ class usersController extends Controller
                 }
             }
         }
+        $this->set($d);
         $this->render("register");
     }
 
@@ -123,6 +125,13 @@ class usersController extends Controller
             {
                 unset($d['users'][$key]);
             }
+
+        }
+
+        for ($i = 0; $i < count($d['users']); $i++)
+        {
+            $d['users'][$i]["group_rush_string"] = $this->groupTranslation($user["group_rush"]);
+            $d['users'][$i]["status_string"] = $this->statusTranslation($user["status"]);
         }
 
         $this->set($d);
@@ -130,10 +139,35 @@ class usersController extends Controller
 
     }
 
-    public function modify()
+
+    public function groupTranslation($group)
+    {
+        $value = '';
+        if ($group == 1)
+        {
+            $value = "Normal user";
+        }
+        else if ($group == 2)
+        {
+            $value = "Writter";
+        }
+        else if ($group == 3)
+        {
+            $value = "Admin";
+        }
+        return $value;
+    }
+
+    public function statusTranslation($status)
+    {
+        return ($status == 0) ? "Disactivated" : "Activated";
+    }
+
+    public function edit($id)
     {
 
     }
+
 
     public function delete($id)
     {
