@@ -111,7 +111,8 @@ class usersController extends Controller
         $this->render('account');
     }
 
-    public function management($id){
+    public function management($id)
+    {
 
         session_start();
 
@@ -121,25 +122,24 @@ class usersController extends Controller
 
         $d['users'] = $user->showAllUsers();
 
-        foreach ($d['users'] as $key => $user) {
+
+        foreach ($d['users'] as $key => $user)
+        {
             if ($user["id"] == $id)
             {
                 unset($d['users'][$key]);
             }
-
         }
 
-        for ($i = 0; $i < count($d['users']); $i++)
-        {
-            $d['users'][$i]["group_rush_string"] = $this->groupTranslation($user["group_rush"]);
-            $d['users'][$i]["status_string"] = $this->statusTranslation($user["status"]);
+
+        for ($i = 0; $i < count($d['users']); $i++) {
+            $d['users'][$i]["group_rush_string"] = $this->groupTranslation($d['users'][$i]["group_rush"]);
+            $d['users'][$i]["status_string"] = $this->statusTranslation($d['users'][$i]["status"]);
         }
 
         $this->set($d);
         $this->render('management');
-
     }
-
 
     public function groupTranslation($group)
     {
@@ -150,7 +150,7 @@ class usersController extends Controller
         }
         else if ($group == 2)
         {
-            $value = "Writter";
+            $value = "Writer";
         }
         else if ($group == 3)
         {
@@ -166,7 +166,27 @@ class usersController extends Controller
 
     public function edit($id)
     {
+        session_start();
+        require(ROOT . 'Models/User.php');
+        require(ROOT . 'Models/Article.php');
+        require(ROOT . 'Models/Comment.php');
+        $user = new User();
+        $d["user"] = $user->showUser($id);
 
+        if (isset($_POST["username"]))
+        {
+            $errors = $this->verifyUpdateUserForm($_POST);
+            $d["errors"] = $this->verifyUpdateUserForm($_POST);
+            if (count($errors) == 0)
+            {
+                $this->secure_form($_POST);
+                $user->updateFromAdmin($id, $_POST["username"], (int)$_POST["group"], (int)$_POST["status"]);
+                header("Location: " . WEBROOT . "users/management/" . $user->getIdFromEmail($_SESSION["email"]));
+            }
+        }
+
+        $this->set($d);
+        $this->render('edit');
     }
 
 

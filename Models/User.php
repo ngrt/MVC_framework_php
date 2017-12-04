@@ -41,15 +41,13 @@ class User extends Model
         ]);
     }
 
-    public function update($id, $username, $hashed_password, $email, $group, $status)
+    public function updateFromAdmin($id, $username, $group, $status)
     {
-        $sql = 'UPDATE users SET username = :username, hashed_password = :hashed_password, email = :email, users.group = :users.group, status = :status, updated_at = :updated_at WHERE id = :id';
+        $sql = 'UPDATE users SET username = :username, group_rush = :group_rush, status = :status, updated_at = :updated_at WHERE id = :id';
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([
             'username' => $username,
-            'hashed_password' => $hashed_password,
-            'email' => $email,
-            'user.group' => $group,
+            'group_rush' => $group,
             'status' => $status,
             'updated_at'  => date('Y-m-d H:i:s'),
             'id' => $id

@@ -13,6 +13,7 @@
     </tr>
   </thead>
   <?php
+  //var_dump($users);
   	foreach($users as $key => $user)
   	{
   	 	echo "<tr>";

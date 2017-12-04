@@ -84,9 +84,12 @@
     </div>
 </nav>
 
-<?php
-    echo $content_for_layout;
-?>
+<div class="container">
+    <?php
+        echo $content_for_layout;
+    ?>
+</div>
+
 
 <footer>Un blog fait par amour à Lille.</footer>
 
