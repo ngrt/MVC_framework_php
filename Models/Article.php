@@ -5,14 +5,15 @@ class Article extends Model
 
     public function create($title, $body = null, $author_id)
     {
-        $sql = 'INSERT INTO articles (title, body, created_at, author_id) VALUES (:title, :body, :created_at, :author_id)';
+        $sql = 'INSERT INTO articles (title, body, created_at, author_id, updated_at) VALUES (:title, :body, :created_at, :author_id, :updated_at)';
 
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([
             'title' => $title,
             'body' => $body,
             'created_at' => date('Y-m-d H:i:s'),
-            'author_id' => $author_id
+            'author_id' => $author_id,
+            'updated_date' => date('Y-m-d H:i:s')
         ]);
     }
 
@@ -69,25 +70,36 @@ class Article extends Model
     {
         if ($title == null)
         {
-            $sql = 'UPDATE articles SET body = :body WHERE id = :id';
+            $sql = 'UPDATE articles SET body = :body, updated_at = :updated_at WHERE id = :id';
 
             $req = Database::getBdd()->prepare($sql);
             return $req->execute([
                 'body' => $body,
-                'id' => $id
+                'id' => $id,
+                'updated_at' => date('Y-m-d H:i:s')
             ]);
         }
         else
         {
-            $sql = 'UPDATE articles SET title = :title, body = :body WHERE id = :id';
+            $sql = 'UPDATE articles SET title = :title, body = :body, updated_at = :updated_at WHERE id = :id';
 
             $req = Database::getBdd()->prepare($sql);
             return $req->execute([
                 'title' => $title,
                 'body' => $body,
-                'id' => $id
+                'id' => $id,
+                'updated_at' => date('Y-m-d H:i:s')
             ]);
         }
+    }
+
+    public function getAuthor($id)
+    {
+        $sql = "SELECT username FROM users JOIN articles ON users.id = articles.author_id WHERE articles.id = ?";
+        $req = Database::getBdd()->prepare($sql);
+        $req->execute([$id]);
+
+        return $req->fetchAll()[0];
     }
 
     public function delete($id)

@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfed9c1f-ab43-48f8-b47d-447faf8e00e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Views/Articles/edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Views/Articles/management.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/Comment.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/articlesController.php" afterPath="$PROJECT_DIR$/Controllers/articlesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/usersController.php" afterPath="$PROJECT_DIR$/Controllers/usersController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/Article.php" afterPath="$PROJECT_DIR$/Models/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/User.php" afterPath="$PROJECT_DIR$/Models/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Articles/create.php" afterPath="$PROJECT_DIR$/Views/Articles/create.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Articles/index.php" afterPath="$PROJECT_DIR$/Views/Articles/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Layouts/default.php" afterPath="$PROJECT_DIR$/Views/Layouts/default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Webroot/.htaccess" afterPath="$PROJECT_DIR$/Webroot/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Articles/show.php" afterPath="$PROJECT_DIR$/Views/Articles/show.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,45 +30,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="articlesController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/articlesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Article.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/Article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="111" column="2" lean-forward="false" selection-start-line="111" selection-start-column="2" selection-end-line="111" selection-end-column="2" />
+            <state relative-caret-position="166">
+              <caret line="92" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="123" selection-end-column="2" />
               <folding>
-                <marker date="1512312354460" expanded="true" signature="121:226" ph="INSERT INTO products... " />
-                <marker date="1512312354460" expanded="true" signature="556:604" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="556:621" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="556:623" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="556:674" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="1010:1032" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="1171:1206" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="1467:1489" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="1628:1670" ph="SELECT * FRO... articles" />
-                <marker date="1512312354460" expanded="true" signature="1942:1989" ph="UPDATE artic... " />
-                <marker date="1512312354460" expanded="true" signature="2212:2275" ph="UPDATE artic... " />
-                <marker date="1512312354460" expanded="true" signature="2551:2584" ph="DELETE FROM " />
-                <marker date="1512312354460" expanded="true" signature="2743:2791" ph="SELECT id FR... articles" />
+                <marker date="1512341002596" expanded="true" signature="121:251" ph="INSERT INTO products... " />
+                <marker date="1512341002596" expanded="true" signature="632:680" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="632:697" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="632:699" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="632:750" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="1086:1108" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="1247:1282" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="1543:1565" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="1704:1746" ph="SELECT * FRO... articles" />
+                <marker date="1512341002596" expanded="true" signature="2018:2091" ph="UPDATE artic... " />
+                <marker date="1512341002596" expanded="true" signature="2367:2456" ph="UPDATE artic... " />
+                <marker date="1512341002596" expanded="true" signature="2788:2883" ph="SELECT usern... users" />
+                <marker date="1512341002596" expanded="true" signature="3064:3097" ph="DELETE FROM " />
+                <marker date="1512341002596" expanded="true" signature="3256:3304" ph="SELECT id FR... articles" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Views/Articles/index.php">
+      <file leaf-file-name="Comment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/Comment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="71" lean-forward="true" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+            <state relative-caret-position="510">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <marker date="1512341414977" expanded="true" signature="119:234" ph="INSERT INTO articles... " />
+                <marker date="1512341414977" expanded="true" signature="593:615" ph="SELECT * FRO... articles" />
+                <marker date="1512341414977" expanded="true" signature="754:789" ph="SELECT * FRO... articles" />
+                <marker date="1512341414977" expanded="true" signature="1043:1065" ph="SELECT * FRO... articles" />
+                <marker date="1512341414977" expanded="true" signature="1204:1246" ph="SELECT * FRO... articles" />
+                <marker date="1512341414977" expanded="true" signature="1510:1532" ph="SELECT * FRO... articles" />
+                <marker date="1512341414977" expanded="true" signature="1671:1713" ph="SELECT * FRO... articles" />
+                <marker date="1512341414977" expanded="true" signature="1917:2012" ph="SELECT usern... users" />
+                <marker date="1512341414977" expanded="true" signature="2193:2226" ph="DELETE FROM " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="articlesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/articlesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="65" column="61" lean-forward="false" selection-start-line="65" selection-start-column="61" selection-end-line="65" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -81,51 +88,18 @@
       <file leaf-file-name="show.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/Articles/show.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="26" />
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Articles/create.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/Articles/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <marker date="1512248122320" expanded="true" signature="145:308" ph="INSERT INTO users... " />
-                <marker date="1512248122320" expanded="true" signature="145:309" ph="INSERT INTO users... " />
-                <marker date="1512248122320" expanded="true" signature="145:334" ph="INSERT INTO users... " />
-                <marker date="1512248122320" expanded="true" signature="145:335" ph="INSERT INTO users... " />
-                <marker date="1512248122320" expanded="true" signature="852:1028" ph="UPDATE users... " />
-                <marker date="1512248122320" expanded="true" signature="1449:1490" ph="SELECT users... users" />
-                <marker date="1512248122320" expanded="true" signature="1686:1722" ph="SELECT id FR... users" />
-                <marker date="1512248122320" expanded="true" signature="1912:1945" ph="SELECT * FRO... users" />
-                <marker date="1512248122320" expanded="true" signature="2126:2145" ph="SELECT * FRO... users" />
-                <marker date="1512248122320" expanded="true" signature="2322:2352" ph="DELETE FROM " />
-                <marker date="1512248122320" expanded="true" signature="2526:2562" ph="SELECT id FR... users" />
-                <marker date="1512248122320" expanded="true" signature="2697:2743" ph="SELECT hashe... users" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dispatcher.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dispatcher.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+            <state relative-caret-position="388">
+              <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -159,17 +133,18 @@
         <option value="$PROJECT_DIR$/Config/db.php" />
         <option value="$PROJECT_DIR$/Webroot/index.php" />
         <option value="$PROJECT_DIR$/Views/Users/register.php" />
-        <option value="$PROJECT_DIR$/Views/Articles/show.php" />
         <option value="$PROJECT_DIR$/Core/Controller.php" />
         <option value="$PROJECT_DIR$/Controllers/usersController.php" />
         <option value="$PROJECT_DIR$/Views/Articles/management.php" />
         <option value="$PROJECT_DIR$/Views/Articles/edit.php" />
         <option value="$PROJECT_DIR$/Models/User.php" />
         <option value="$PROJECT_DIR$/Views/Layouts/default.php" />
-        <option value="$PROJECT_DIR$/Views/Articles/create.php" />
         <option value="$PROJECT_DIR$/Webroot/.htaccess" />
-        <option value="$PROJECT_DIR$/Models/Article.php" />
+        <option value="$PROJECT_DIR$/Views/Articles/create.php" />
         <option value="$PROJECT_DIR$/Controllers/articlesController.php" />
+        <option value="$PROJECT_DIR$/Views/Articles/show.php" />
+        <option value="$PROJECT_DIR$/Models/Article.php" />
+        <option value="$PROJECT_DIR$/Models/Comment.php" />
         <option value="$PROJECT_DIR$/Views/Articles/index.php" />
       </list>
     </option>
@@ -185,9 +160,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-1920" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -313,25 +287,25 @@
       <workItem from="1511977517163" duration="6431000" />
       <workItem from="1512028821114" duration="35186000" />
       <workItem from="1512216181516" duration="19445000" />
-      <workItem from="1512305651452" duration="5190000" />
+      <workItem from="1512305651452" duration="7838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66252000" />
+    <option name="totallyTimeSpent" value="68900000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1315229" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17668097" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23733863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28899637" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -610,14 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Articles/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Webroot/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -630,14 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="769" column="20" lean-forward="false" selection-start-line="769" selection-start-column="20" selection-end-line="769" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dispatcher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -663,48 +621,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/articlesController.php">
+    <entry file="file://$PROJECT_DIR$/Dispatcher.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="315">
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Articles/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Models/Article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="111" column="2" lean-forward="false" selection-start-line="111" selection-start-column="2" selection-end-line="111" selection-end-column="2" />
+        <state relative-caret-position="166">
+          <caret line="92" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="123" selection-end-column="2" />
           <folding>
-            <marker date="1512312354460" expanded="true" signature="121:226" ph="INSERT INTO products... " />
-            <marker date="1512312354460" expanded="true" signature="556:604" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="556:621" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="556:623" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="556:674" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="1010:1032" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="1171:1206" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="1467:1489" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="1628:1670" ph="SELECT * FRO... articles" />
-            <marker date="1512312354460" expanded="true" signature="1942:1989" ph="UPDATE artic... " />
-            <marker date="1512312354460" expanded="true" signature="2212:2275" ph="UPDATE artic... " />
-            <marker date="1512312354460" expanded="true" signature="2551:2584" ph="DELETE FROM " />
-            <marker date="1512312354460" expanded="true" signature="2743:2791" ph="SELECT id FR... articles" />
+            <marker date="1512341002596" expanded="true" signature="121:251" ph="INSERT INTO products... " />
+            <marker date="1512341002596" expanded="true" signature="632:680" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="632:697" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="632:699" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="632:750" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="1086:1108" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="1247:1282" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="1543:1565" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="1704:1746" ph="SELECT * FRO... articles" />
+            <marker date="1512341002596" expanded="true" signature="2018:2091" ph="UPDATE artic... " />
+            <marker date="1512341002596" expanded="true" signature="2367:2456" ph="UPDATE artic... " />
+            <marker date="1512341002596" expanded="true" signature="2788:2883" ph="SELECT usern... users" />
+            <marker date="1512341002596" expanded="true" signature="3064:3097" ph="DELETE FROM " />
+            <marker date="1512341002596" expanded="true" signature="3256:3304" ph="SELECT id FR... articles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1512341414977" expanded="true" signature="119:234" ph="INSERT INTO articles... " />
+            <marker date="1512341414977" expanded="true" signature="593:615" ph="SELECT * FRO... articles" />
+            <marker date="1512341414977" expanded="true" signature="754:789" ph="SELECT * FRO... articles" />
+            <marker date="1512341414977" expanded="true" signature="1043:1065" ph="SELECT * FRO... articles" />
+            <marker date="1512341414977" expanded="true" signature="1204:1246" ph="SELECT * FRO... articles" />
+            <marker date="1512341414977" expanded="true" signature="1510:1532" ph="SELECT * FRO... articles" />
+            <marker date="1512341414977" expanded="true" signature="1671:1713" ph="SELECT * FRO... articles" />
+            <marker date="1512341414977" expanded="true" signature="1917:2012" ph="SELECT usern... users" />
+            <marker date="1512341414977" expanded="true" signature="2193:2226" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Articles/show.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="26" />
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/articlesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="65" column="61" lean-forward="false" selection-start-line="65" selection-start-column="61" selection-end-line="65" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Articles/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="71" lean-forward="true" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+        <state relative-caret-position="388">
+          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="17" />
           <folding />
         </state>
       </provider>

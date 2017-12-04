@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" placeholder="Enter a title" name="title">
-        <?php echo isset(($this->verifyPostForm($_POST))["title"]) ? ($this->verifyPostForm($_POST))["title"] : null;?>
+        <?php echo ($this->verifyPostForm($_POST))["title"];?>
     </div>
     <div class="form-group">
         <label for="body">Body</label>

@@ -1,7 +1,7 @@
 <?php
     class articlesController extends Controller
     {
-        function index($page)
+        function index($page = 1)
         {
             session_start();
             if (isset($_SESSION["email"]))
@@ -63,6 +63,7 @@
             $article = new Article();
             $article->show($id);
             $d['article'] = $article->show($id);
+            $d['author'] = $article->getAuthor($id)["username"];
 
             $this->set($d);
             $this->render('show');
