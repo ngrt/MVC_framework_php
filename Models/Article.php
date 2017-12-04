@@ -3,7 +3,7 @@
 class Article extends Model
 {
 
-    public function create($title, $body = null, $author_id, $cat_id)
+    public function create($title, $body = null, $author_id, $cat_id = null)
     {
         $sql = 'INSERT INTO articles (title, body, created_at, author_id, updated_at, cat_id) VALUES (:title, :body, :created_at, :author_id, :updated_at, :cat_id)';
 
@@ -67,7 +67,7 @@ class Article extends Model
         return $req->fetchAll();
     }
 
-    public function update($id, $title = null, $body = null, $cat_id)
+    public function update($id, $title = null, $body = null, $cat_id = null)
     {
         if ($title == null)
         {
@@ -133,6 +133,17 @@ class Article extends Model
     public function addCategory($article_id, $cat_id)
     {
         $sql = 'UPDATE articles SET cat_id = :cat_id WHERE id = :article_id';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([
+            'article_id' => $article_id,
+            'cat_id' => $cat_id
+        ]);
+    }
+
+    public function setCategoryToNull($cat_id)
+    {
+        $sql = 'UPDATE articles SET cat_id = NULL WHERE id = :article_id';
 
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([

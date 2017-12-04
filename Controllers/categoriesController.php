@@ -21,10 +21,14 @@ class categoriesController extends Controller
     {
         session_start();
         require (ROOT . "Models/Category.php");
+        require (ROOT . "Models/Article.php");
 
         $category = new Category();
+        $article = new Article();
 
         $category->delete($id);
+
+        $article->setCategoryToNull($id);
 
         header("Location: " . WEBROOT . "categories/management");
     }

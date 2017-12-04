@@ -1,4 +1,5 @@
 <?php
+
 class usersController extends Controller
 {
 
@@ -34,6 +35,11 @@ class usersController extends Controller
     {
         session_start();
 
+        if (isset($_COOKIE["email"]))
+        {
+            $_SESSION["email"] = $_COOKIE["email"];
+        }
+
         if (isset($_SESSION["email"]))
         {
             header("Location: " . WEBROOT . "articles/index");
@@ -47,8 +53,11 @@ class usersController extends Controller
             if ($user->verify_password($_POST["email"], $_POST["password"]))
             {
                 $_SESSION["email"] = $_POST["email"];
-                var_dump($_POST);
-                //header("Location: " . WEBROOT . "articles/index");
+                if (isset($_POST["remember_me"]))
+                {
+                    setcookie("email", $_SESSION["email"], time()+3600*24);
+                }
+                header("Location: " . WEBROOT . "articles/index");
             }
             else
             {
@@ -105,6 +114,8 @@ class usersController extends Controller
                 $comment->deleteCommentsFromUser($id);
                 $_SESSION = array();
                 session_destroy();
+                unset($_COOKIE["email"]);
+                setcookie("email", $_SESSION["email"], -1);
                 header("Location: " . WEBROOT . "articles/index");
             }
         }
@@ -212,6 +223,12 @@ class usersController extends Controller
         session_start();
         $_SESSION = array();
         session_destroy();
+        if (isset($_COOKIE["email"]))
+        {
+            unset($_COOKIE["email"]);
+            setcookie("email", $_SESSION["email"], -1);
+        }
+
         header("Location: " . WEBROOT . "articles/index");
     }
 

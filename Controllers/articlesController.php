@@ -4,6 +4,12 @@
         function index($page = 1)
         {
             session_start();
+
+            if (isset($_COOKIE["email"]))
+            {
+                $_SESSION["email"] = $_COOKIE["email"];
+            }
+
             if (isset($_SESSION["email"]))
             {
                 require(ROOT . 'Models/User.php');
