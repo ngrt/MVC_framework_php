@@ -15,3 +15,9 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<br>
+<br>
+<div>
+    <a href="<?php echo WEBROOT . 'users/register'; ?>" class="btn btn-info">Or register if you don't have an account.</a>
+</div>

@@ -46,6 +46,17 @@ class Category extends Model
         return $req->execute([$category_id]);
     }
 
+    public function add($title)
+    {
+        $sql = 'INSERT INTO categories (title) VALUES (:title)';
+
+        $req = Database::getBdd()->prepare($sql);
+        return $req->execute([
+            'title' => $title
+        ]);
+    }
+
+
 
 }
 

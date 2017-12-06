@@ -143,11 +143,10 @@ class Article extends Model
 
     public function setCategoryToNull($cat_id)
     {
-        $sql = 'UPDATE articles SET cat_id = NULL WHERE id = :article_id';
+        $sql = 'UPDATE articles SET cat_id = NULL WHERE cat_id = :cat_id';
 
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([
-            'article_id' => $article_id,
             'cat_id' => $cat_id
         ]);
     }

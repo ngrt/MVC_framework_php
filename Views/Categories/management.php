@@ -19,5 +19,17 @@
             }
             ?>
         </table>
+
+
     </div>
+
+    <h2>Add a category</h2>
+    <form method='post' action="#">
+        <div class="form-group">
+            <label for="title">Category name</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter a category" name="title" value ="<?php if (isset($article[0]["title"])) echo $article[0]["title"];?>">
+            <?php echo isset($errors["title"]) ? $errors["title"] : null;?>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
 </div>

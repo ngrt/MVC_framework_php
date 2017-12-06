@@ -21,7 +21,7 @@
         echo "<td>" . $user['email'] . "</td>";
         echo "<td>" . $user['group_rush_string'] . "</td>";
         echo "<td>" . $user['status_string'] . "</td>";
-        echo "<td class='text-center'><a class='btn btn-info btn-xs' href='" . WEBROOT . "users/edit.php/" . $user['id'] . "'><span class='glyphicon glyphicon-edit.php'></span> Edit</a> <a href='". WEBROOT . "users/delete/" . $user['id'] . "' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Del</a></td>";
+        echo "<td class='text-center'><a class='btn btn-info btn-xs' href='" . WEBROOT . "users/edit/" . $user['id'] . "'><span class='glyphicon glyphicon-edit.php'></span> Edit</a> <a href='". WEBROOT . "users/delete/" . $user['id'] . "' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Del</a></td>";
       	echo "</tr>";
   	}
   ?>

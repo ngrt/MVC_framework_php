@@ -158,6 +158,23 @@
             $this->render('edit');
         }
 
+        function delete($id)
+        {
+            session_start();
+
+            require(ROOT . 'Models/Article.php');
+            require(ROOT . 'Models/Comment.php');
+
+            $article = new Article();
+            $comment = new Comment();
+
+            $article->delete($id);
+            $comment->deleteCommentsofArticle($id);
+
+            header("Location: " . WEBROOT . "articles/management/");
+
+        }
+
         function verifyPostForm($post)
         {
             $errors = [];

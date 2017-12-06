@@ -197,7 +197,7 @@ class usersController extends Controller
         }
 
         $this->set($d);
-        $this->render('edit.php');
+        $this->render('edit');
     }
 
 
